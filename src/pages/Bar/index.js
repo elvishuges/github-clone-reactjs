@@ -19,6 +19,21 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  ul:{
+    listStyleType: 'none',
+    textDecoration:'none',
+    margin: 0,
+    padding:'0px',
+    backgroundColor: "#24292e",
+  },
+  li:{
+    paddingTop:8,
+    paddingBottom:8,
+    
+    textDecoration: 'none',
+    marginLeft: 20,
+    textAlign:'left',
+  },
   grow: {
     flexGrow: 1,
   },
@@ -88,7 +103,7 @@ export default function Bar() {
   const menuId = 'primary-search-account-menu';
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#24292e"}}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -108,11 +123,7 @@ export default function Bar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          {/* <div className={classes.listItensNav} >
-            
-          </div> */}
-
-          
+                    
           <Typography className={classes.title}  >
           <Link style={{ textDecoration: 'none', padding: '6px' }} color="inherit" href="#" >
             Pull request
@@ -152,6 +163,15 @@ export default function Bar() {
            </div>
         </Toolbar>
       </AppBar>
+      <div>
+      <ul className={classes.ul}>
+         <li className={classes.li}><a style={{ textDecoration: 'none', color:'white'}} className="active" href="#Create Page">Create Page</a></li>
+         <li className={classes.li}><a style={{ textDecoration: 'none', color:'white'}}  href="#Manage Pages">Manage Pages</a></li>
+         <li className={classes.li}><a style={{ textDecoration: 'none', color:'white'}}  href="#Create Ads">Create Ads</a></li>
+         <li className={classes.li}><a style={{ textDecoration: 'none', color:'white'}}  href="#Manage Ads">Manage Ads</a></li>
+         
+          </ul>
+      </div>
     </div>
   );
 }
