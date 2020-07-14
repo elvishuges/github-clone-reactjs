@@ -28,11 +28,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   gitHubIcon: {
-    marginRight: 12,
-    fontSize: 30,
-    //color: "red"
-  }
-  ,
+    marginLeft:0, 
+    color: 'white'
+  },
+  menuContent:{
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
+ 
   menuIcon: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
@@ -124,6 +128,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function Bar() {
   const classes = useStyles();
   const menuId = 'primary-search-account-menu';
@@ -131,15 +137,15 @@ export default function Bar() {
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: "#24292e" }}>
-        <Toolbar>
-          <IconButton style={{ color: 'white' }} >
-            <MenuIcon onClick={() => {
+        <Toolbar style={{minHeight:0, paddingLeft:10,paddingRight:10}}>
+          <IconButton onClick={() => {
               setshowMenu(!showMenu);
-            }} className={classes.menuIcon} />
+            }} className={classes.menuIcon} style={{ color: 'white' }} >
+            <MenuIcon />
           </IconButton>
           <div className={classes.growIcon} />
-          <IconButton style={{ color: 'white' }} >
-            <GitHub  className={classes.gitHubIcon} />
+          <IconButton className={classes.gitHubIcon}  >
+            <GitHub style={{ fontSize: '30' }}   />
           </IconButton>
 
           <div className={classes.search}>
@@ -192,8 +198,9 @@ export default function Bar() {
           </div>
         </Toolbar>
       </AppBar>
+      <div className={classes.menuContent}>
       {showMenu ? (
-        <div>
+        <div >
           <ul className={classes.ul}>
             <li className={classes.li}><a style={{ fontSize: '14px', fontWeight: "bold", textDecoration: 'none', color: '#F9E7E7' }} href="#Manage Pages">Dasboard</a></li>
             <li className={classes.li}><a style={{ fontSize: '14px', fontWeight: "bold", textDecoration: 'none', color: '#F9E7E7' }} href="#Manage Pages">Pull request</a></li>
@@ -209,6 +216,8 @@ export default function Bar() {
           null
         )
       }
+      </div>
+      {/* contente here */}
     </div>
   );
 }
