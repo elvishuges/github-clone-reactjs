@@ -1,20 +1,23 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles, withTheme } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import Badge from '@material-ui/core/Badge';
+import Box from '@material-ui/core/Box';
+import Slide from '@material-ui/core/Slide';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Link from '@material-ui/core/Link';
 import GitHub from '@material-ui/icons/GitHub';
-import Divider from '@material-ui/core/Divider';
-import SearchIcon from '@material-ui/icons/Search';
+import Container from '@material-ui/core/Container';
 
-import Badge from '@material-ui/core/Badge';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -130,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function Bar() {
+export default function Bar(props) {
   const classes = useStyles();
   const menuId = 'primary-search-account-menu';
   const [showMenu, setshowMenu] = React.useState(false);
@@ -138,12 +141,15 @@ export default function Bar() {
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: "#24292e" }}>
         <Toolbar style={{minHeight:0, paddingLeft:10,paddingRight:10}}>
+
           <IconButton onClick={() => {
               setshowMenu(!showMenu);
             }} className={classes.menuIcon} style={{ color: 'white' }} >
-            <MenuIcon />
+            <MenuIcon />            
           </IconButton>
+
           <div className={classes.growIcon} />
+
           <IconButton className={classes.gitHubIcon}  >
             <GitHub style={{ fontSize: '30' }}   />
           </IconButton>
@@ -173,12 +179,15 @@ export default function Bar() {
               Explore
             </Link>
           </Typography>
+
           <div className={classes.grow} />
+
           <IconButton aria-label="show 17 new notifications" color="inherit">
             <Badge badgeContent={17} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
+
           <div className={classes.sectionDesktop} >
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -194,6 +203,7 @@ export default function Bar() {
               color="inherit"
             >
               <AccountCircle />
+              
             </IconButton>
           </div>
         </Toolbar>
@@ -217,7 +227,18 @@ export default function Bar() {
         )
       }
       </div>
-      {/* contente here */}
+      {/* <Container>
+        <Box my={2}>
+          {[...new Array(12)]
+            .map(
+              () => `Cras mattis consectetur purus sit amet fermentum.
+Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
+            )
+            .join('\n')}
+        </Box>
+      </Container> */}
     </div>
   );
 }
