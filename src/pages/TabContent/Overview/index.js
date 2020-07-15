@@ -4,12 +4,14 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
+import { Container } from '@material-ui/core';
+
+import CardRepository from './components/CardRepository'
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    gridGap: theme.spacing(3),
+    textAlign: "left",
+    paddingLeft: 2,
   },
   paper: {
     padding: theme.spacing(1),
@@ -26,14 +28,20 @@ const useStyles = makeStyles((theme) => ({
 export default function CSSGrid() {
   const classes = useStyles();
 
-  return (
-    <div>
-      <Typography variant="subtitle1" gutterBottom>
-        Material-UI Grid:
-      </Typography>
-      <Typography variant="subtitle1" gutterBottom>
-        CSS Grid Layout:
-      </Typography>
-    </div>
+  return (    
+      <Container className={classes.container}>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <div style={{ float: 'left' }}>  Popular repositories</div>
+            <div style={{ float: 'right' }}> Popular repositories</div>
+          </Grid>
+          <Grid item xs={6}>
+            <CardRepository />
+          </Grid>
+          <Grid item xs={6}>
+            <CardRepository />
+          </Grid>
+        </Grid>
+      </Container>
   );
 }

@@ -7,8 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+
+import Overview from './../TabContent/Overview'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -48,12 +48,13 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: '2px',
     },
     container:{
-        textAlign:"left"      
+        textAlign:"left",
+        paddingLeft:2,
     },
     tab:{
         minWidth: 100,
-    }
-   
+        textTransform: 'none',
+    }   
 }));
 
 
@@ -72,20 +73,17 @@ export default function CenteredTabs() {
                 onChange={handleChange}
                 aria-label="simple tabs example"
             >
-                <Tab className={classes.tab} label="Item One"   {...a11yProps(0)} />
-                <Tab className={classes.tab} label="Item One"   {...a11yProps(1)} />
-                <Tab className={classes.tab} label="Item One"   {...a11yProps(2)} />
-                <Tab className={classes.tab} label="Item One"   {...a11yProps(3)} />
+                <Tab className={classes.tab} label="Overview"   {...a11yProps(0)} />
+                <Tab className={classes.tab} label="Repositories"   {...a11yProps(1)} />
+                <Tab className={classes.tab} label="Projects"   {...a11yProps(2)} />
+                <Tab className={classes.tab} label="Packages"   {...a11yProps(3)} />
             </Tabs>
             <Divider />
             <TabPanel value={value} index={0}>
-                <Container className={classes.container}>                
-                   <div  style={{float:'left'}}>  Popular repositories</div>
-                   <div style={{float:'right'}}> Popular repositories</div>  
-                </Container> 
+                <Overview/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+                Overview
             </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three
