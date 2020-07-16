@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
@@ -23,7 +22,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    <div>{children}</div>
                 </Box>
             )}
         </div>
@@ -31,7 +30,6 @@ function TabPanel(props) {
 }
 
 TabPanel.propTypes = {
-    children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
 };
@@ -43,10 +41,7 @@ function a11yProps(index) {
     };
 }
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        borderBottom: '2px',
-    },
+    
     container:{
         textAlign:"left",
         paddingLeft:2,
@@ -67,7 +62,7 @@ export default function CenteredTabs() {
     };
 
     return (
-        < div className={classes.root}>
+        <div>
             <Tabs
                 value={value}                
                 onChange={handleChange}
@@ -79,15 +74,18 @@ export default function CenteredTabs() {
                 <Tab className={classes.tab} label="Packages"   {...a11yProps(3)} />
             </Tabs>
             <Divider />
-            <TabPanel value={value} index={0}>
-                <Overview/>
+            <TabPanel component={'div'} value={value} index={0} >
+                <Overview /> 
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Overview
+                2
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                3
             </TabPanel>
-        </ div>
+            <TabPanel value={value} index={3}>
+                4
+            </TabPanel>
+        </div>
     );
 }

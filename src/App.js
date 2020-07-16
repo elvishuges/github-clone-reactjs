@@ -28,8 +28,7 @@ function App() {
            <div className={classes.div}></div>   
            <Divider/>
             Info 
-        </Grid>
-        
+        </Grid>        
         <Grid item sm={9} xs={12}>
           <Tab></Tab>
         </Grid>
