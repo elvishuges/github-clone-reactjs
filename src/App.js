@@ -13,8 +13,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     height:24,
     marginBottom: theme.spacing(1),
-  },
-
+  }
 }));
 
 

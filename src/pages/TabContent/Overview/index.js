@@ -5,33 +5,29 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
+import CardRepository from './components/CardRepository'
 
 export default function Overview({ children }) {
   
-  const classes = useStyles();
+  const repositoryContent = 
+  [{titulo:"React native", conteudo:"Projeto feito com o react cli para arendizado",linguagem: "React native"
+  },{ titulo:"React js",conteudo:  "Projeto feito com o react cli para aprendizado",linguagem:'react js'},
+  {titulo:"Vuesj",conteudo:"Projeto feito com o vuejs",linguagem:'vuejs' }]
 
   return (
-    <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>xs=12</Paper>
+    <Container >
+      <Grid container spacing={1}>
+        <Grid item xs={12} >        
+          <div style={{ float: 'left'}}>Popular repositories</div>
+          <div style={{float: 'right'}}>Customize your pins</div>                
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
+        {repositoryContent
+            .map((element)=> (
+              <Grid item xs={6}>
+                <CardRepository titulo={element.titulo} conteudo={element.conteudo} linguagem={element.linguagem} />
+              </Grid>
+            ))
+            }
       </Grid>
     </Container>   
   );

@@ -40,12 +40,8 @@ function a11yProps(index) {
         'aria-controls': `simple-tabpanel-${index}`,
     };
 }
+
 const useStyles = makeStyles((theme) => ({
-    
-    container:{
-        textAlign:"left",
-        paddingLeft:2,
-    },
     tab:{
         minWidth: 100,
         textTransform: 'none',

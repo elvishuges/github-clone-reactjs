@@ -7,11 +7,10 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   
   card: {
-    paddingBottom:1
-  },
-  cardContent:{
-    paddingBottom:0
-  },
+    paddingBottom:0,
+    margin: '0px 2px',
+    textAlign:"left"
+  },  
   title: {
     fontSize: 14,
     color:'#0366d6',
@@ -22,23 +21,40 @@ const useStyles = makeStyles({
     marginTop:10,
     fontSize: 12,
   },
+  language:{
+    paddingBottom:'0px',
+    marginBottom:'-6px',
+    verticalAlign:'middle',
+    fontSize:12
+  },
+  cardContent:{
+    paddingBottom:'0px'
+  },
+  bullet: {
+    height: '12px',
+    width: '12px',
+    backgroundColor: '#e16737',
+    borderRadius: '50%',
+    display: 'inline-block'
+  },
   
 });
 
-export default function CardRepository() {
+export default function CardRepository(props) {
   const classes = useStyles();
+  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.card} variant="outlined">
-      <CardContent>
-        <Typography className={classes.title} ogutterBottom>
-        React js
+      <CardContent className={classes.cardContent}>
+        <Typography className={classes.title} >
+         {props.titulo}
         </Typography>       
         <Typography className={classes.pos} color="textSecondary">
-        sualizar e comentar sobre determinado produto.
+        {props.conteudo}
         </Typography>
-        <Typography className={classes.language} color="textSecondary">
-          oii
+        <Typography className={classes.language}  color="textSecondary">
+        <span className={classes.bullet}></span> {props.linguagem}
         </Typography>
       </CardContent>
     </Card>
