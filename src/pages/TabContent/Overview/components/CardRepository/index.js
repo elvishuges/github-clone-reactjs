@@ -5,12 +5,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-  
+
   card: {
     paddingBottom:0,
     margin: '0px 2px',
-    textAlign:"left"
-  },  
+    textAlign:"left",
+  },
   title: {
     fontSize: 14,
     color:'#0366d6',
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     borderRadius: '50%',
     display: 'inline-block'
   },
-  
+
 });
 
 export default function CardRepository(props) {
@@ -45,11 +45,11 @@ export default function CardRepository(props) {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.card} variant="outlined">
+    <Card  className={classes.card} variant="outlined">
       <CardContent className={classes.cardContent}>
         <Typography className={classes.title} >
          {props.titulo}
-        </Typography>       
+        </Typography>
         <Typography className={classes.pos} color="textSecondary">
         {props.conteudo}
         </Typography>

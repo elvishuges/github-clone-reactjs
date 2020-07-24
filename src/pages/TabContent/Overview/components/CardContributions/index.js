@@ -6,6 +6,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import CalendarHeatmap from 'react-calendar-heatmap';
+import 'react-calendar-heatmap/dist/styles.css';
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -28,26 +31,17 @@ export default function CardContributions() {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <div>
+      <CalendarHeatmap
+        startDate={new Date('2016-01-01')}
+        endDate={new Date('2016-10-01')}
+        values={[
+          { date: '2016-01-01' },
+          { date: '2016-01-02' },
+          { date: '2016-02-30' },
+          // ...and so on
+        ]}
+      />
+    </div>
   );
 }

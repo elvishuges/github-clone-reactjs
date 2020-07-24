@@ -45,7 +45,11 @@ const useStyles = makeStyles((theme) => ({
     tab:{
         minWidth: 100,
         textTransform: 'none',
-    }   
+    },
+    tabs:{
+        paddingRight:30,
+        paddingTop:25
+    }
 }));
 
 
@@ -60,9 +64,11 @@ export default function CenteredTabs() {
     return (
         <div>
             <Tabs
-                value={value}                
+                value={value}
                 onChange={handleChange}
+                className={classes.tabs}
                 aria-label="simple tabs example"
+                variant="scrollable"
             >
                 <Tab className={classes.tab} label="Overview"   {...a11yProps(0)} />
                 <Tab className={classes.tab} label="Repositories"   {...a11yProps(1)} />
@@ -71,7 +77,7 @@ export default function CenteredTabs() {
             </Tabs>
             <Divider />
             <TabPanel component={'div'} value={value} index={0} >
-                <Overview /> 
+                <Overview />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 2

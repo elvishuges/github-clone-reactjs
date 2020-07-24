@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
   div: {
     padding: theme.spacing(1),
-    height:24,
+    height:48,
     marginBottom: theme.spacing(1),
   }
 }));
@@ -23,11 +23,11 @@ function App() {
     <div className="App">
       <Bar></Bar>
       <Grid container >
-        <Grid item sm={3} xs={12}>  
-           <div className={classes.div}></div>   
+        <Grid item sm={3} xs={12}>
+           <div className={classes.div}></div>
            <Divider/>
-            Info 
-        </Grid>        
+            Info
+        </Grid>
         <Grid item sm={9} xs={12}>
           <Tab></Tab>
         </Grid>
