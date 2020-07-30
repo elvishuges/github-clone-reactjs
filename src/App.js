@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
+import client  from "./services/graphql/coinbase.service";
+import { ApolloProvider } from '@apollo/client';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -21,6 +23,7 @@ function App() {
   const classes = useStyles();
   return (
     <div className="App">
+      <ApolloProvider client={client}>
       <Bar></Bar>
       <Grid container >
         <Grid item sm={3} xs={12}>
@@ -32,6 +35,7 @@ function App() {
           <Tab></Tab>
         </Grid>
       </Grid>
+      </ApolloProvider>
     </div>
   );
 }
