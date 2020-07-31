@@ -5,10 +5,11 @@ import Tab from './pages/Tab'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import Routes  from "./pages/Routes";
 
-import client  from "./services/graphql/coinbase.service";
+import Routes  from "./pages/Routes";
 import { ApolloProvider } from '@apollo/client';
+import client  from "./services/graphql/clientConfig";
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -23,9 +24,11 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   return (
+    <ApolloProvider client={client}>
     <div className="App">
       <Routes/>
     </div>
+    </ApolloProvider>
   );
 }
 
