@@ -16,7 +16,7 @@ function exchangeRates() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  if(token){
+  if (token){
     return token // retornando apenas token para test
   }
 }

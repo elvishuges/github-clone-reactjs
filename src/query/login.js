@@ -4,7 +4,7 @@ import {
 } from "@apollo/client";
 
 
-const login = gql`
+const LOGIN = gql`
 {
   rates(currency: "USD") {
     currency
@@ -12,3 +12,7 @@ const login = gql`
   }
 }
 `
+
+export {
+  LOGIN,
+}

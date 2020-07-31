@@ -5,8 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
-import { ApolloProvider } from '@apollo/client';
-
 const useStyles = makeStyles((theme) => ({
 
   div: {

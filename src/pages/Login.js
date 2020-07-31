@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -10,18 +9,20 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import GitHub from '@material-ui/icons/GitHub';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useQuery, gql } from '@apollo/client';
+import { Redirect } from 'react-router'
+import { useLazyQuery} from '@apollo/client';
+import { LOGIN } from './../query/login'
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+       made with S2 by Elvis Huges
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -29,19 +30,29 @@ function Copyright() {
   );
 }
 
-function handleClick(email,password) {
-  console.log('*email*',email);
-}
-
 
 
 export default function Login() {
+
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleChangeEmail = event => setEmail(event.target.value);
-  const handleChangePassword = event => setPassword(event.target.value);
-  const click = () => handleClick(email,password)
+  var buttonText = ""
+
+  const [handleClick, { called, loading, data }] = useLazyQuery(
+    LOGIN
+  );
+
+  if (loading) buttonText = "loading"
+
+  if (!called) {
+    buttonText = "Login"
+  }
+
+  if (data) {
+      // Redirect to home page
+      return <Redirect to='/' />
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -58,7 +69,7 @@ export default function Login() {
           </Typography>
             <TextField
               value={email}
-              onChange={handleChangeEmail}
+              onChange={(e) => setEmail(e.target.value)}
               variant="outlined"
               margin="normal"
               required
@@ -72,7 +83,7 @@ export default function Login() {
             />
             <TextField
             value={password}
-            onChange={handleChangePassword}
+            onChange={(e) => setPassword(e.target.value)}
               variant="outlined"
               margin="normal"
               required
@@ -90,12 +101,13 @@ export default function Login() {
             />
             <Button
               fullWidth
+              disabled={loading}
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={()=> click()}
+              onClick={()=> handleClick()}
             >
-              Login
+              {buttonText}
             </Button>
             <Grid container>
               <Grid item xs>

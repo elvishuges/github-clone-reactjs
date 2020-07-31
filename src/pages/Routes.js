@@ -10,12 +10,7 @@ import Main from "./Main"
 
 class Routes extends Component {
 
-  componentDidMount() {
-    console.log('==== Routes mounted! ====');
-  }
-
   render() {
-
 
     return (
       <BrowserRouter>
