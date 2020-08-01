@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router'
 import { useLazyQuery} from '@apollo/client';
 import { LOGIN } from './../query/login'
+import {setToken} from './../store/auth'
 
 
 function Copyright() {
@@ -30,34 +31,33 @@ function Copyright() {
   );
 }
 
-
-
 export default function Login() {
 
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  var buttonText = ""
+  var buttonText = "Login"
 
-  const [handleClick, { called, loading, data }] = useLazyQuery(
+  const [handleClick, { called, loading,error, data }] = useLazyQuery(
     LOGIN
   );
 
-  if (loading) buttonText = "loading"
+  if (loading) buttonText = "loading..."
 
-  if (!called) {
-    buttonText = "Login"
+  if (error) {
+    buttonText = "Error ao logar..."
   }
 
   if (data) {
-      // Redirect to home page
-      return <Redirect to='/' />
+    setToken(data.token).then((response)=>
+        <Redirect to='/main' />
+    )
   }
 
   return (
+
     <Grid container component="main" className={classes.root}>
        <Grid item xs={12} sm={7} md={8}  className={classes.image} >
-
       </Grid>
       <Grid item xs={12} sm={5} md={4} component={Paper} elevation={6} square>
         <div className={classes.paper}>
